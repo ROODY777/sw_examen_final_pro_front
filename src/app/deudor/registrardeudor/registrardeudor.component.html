@@ -1,0 +1,90 @@
+<h4>Crear Deudor </h4>
+<hr />
+<div class="container-fluid abs-center">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+
+            <form (submit)="guardarCambios()" [formGroup]="form">
+
+                 <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Seleccione Cargo en la empresa</mat-label>
+                            <mat-select formControlName="cargoempresa"
+                            name="cargoempresa"  id="cargoempresa" [(ngModel)]="deudor.cargoEmpresaDeudor">
+                         
+                                 <mat-option [value]="">--Seleccione Cargo en la empresa--</mat-option>
+                                 <mat-option *ngFor="let cargo of lstCargoEmpresaDeudor"   [value]="cargo" >
+                                     {{cargo.cargoempresa}}
+                                 </mat-option>
+                              
+                            </mat-select>
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorcargoEmpresa()}}</mat-error> 
+                        </mat-form-field>
+                    </div>
+                </div> 
+
+
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nombre</mat-label>
+                            <input formControlName="nombre" 
+                            name="nombre"  id="nombre" [(ngModel)]="deudor.nombre"  
+                            matInput />
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Apellidos</mat-label>
+                            <input formControlName="apellidos"
+                            name="apellidos"  id="apellidos" [(ngModel)]="deudor.apellidos"  
+                            matInput />
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorcampoApellidos()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Correo electrónico</mat-label>
+                            <input formControlName="correo"
+                            name="correo"  id="correo" [(ngModel)]="deudor.correo"  
+                            matInput />
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorCampoCorreo()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Número de teléfono</mat-label>
+                            <input formControlName="telefono"
+                            name="telefono"  id="telefono" [(ngModel)]="deudor.telefono"  type="number"
+                            matInput />
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorCampoTelefono()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-12 text-right">
+                        <button mat-flat-button color="primary" style="margin:15px ;" [disabled]="form.invalid">
+                            Guardar Cambios
+                        </button>
+                        <a mat-stroked-button routerLink="/listar-deudor">
+                            Cancelar
+                        </a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>

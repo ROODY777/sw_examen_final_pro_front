@@ -1,0 +1,8 @@
+.card-factura{
+    border: 3px dashed rgba(0, 0, 0, 0.1); 
+    width: 40%;
+    padding: 8px;
+    height: auto;
+    background-color: #F5F9FF;
+    margin-bottom: 10px;
+}

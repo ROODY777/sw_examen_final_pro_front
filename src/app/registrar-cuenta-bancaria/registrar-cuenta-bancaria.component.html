@@ -1,0 +1,103 @@
+
+<h4>Crear Cuenta Bancaria</h4>
+<hr />
+<div class="container-fluid abs-center">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+
+            <form (submit)="guardarCambios()" [formGroup]="form">
+
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Seleccione tipo Banco</mat-label>
+                            <mat-select formControlName="banco" 
+                              id="banco" [(ngModel)]="cuentaBancaria.banco" 
+                            >
+                                <mat-option [value]="">--Seleccione tipo Banco--</mat-option>
+                                <mat-option *ngFor="let bancox of bancomongo"  [value]="bancox.descripcion" >
+                                    {{bancox.descripcion}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorCampoBanco()}}</mat-error> 
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Seleccione tipo Cuenta Bancaria</mat-label>
+                            <mat-select formControlName="tipoCuentaBancaria" 
+                            name="tipoCuentaBancaria"  id="tipoCuentaBancaria" [(ngModel)]="cuentaBancaria.tipoCuentaBancaria" 
+                           >
+                                <mat-option [value]="">--Seleccione tipo Cuenta Bancaria--</mat-option>
+                                <mat-option *ngFor="let x of lsttipoCuentabancaria" [value]="x">
+                                    {{x.descripcion}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorCampoTipoCuentaBancaria()}}</mat-error> 
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Seleccione tipo Moneda</mat-label>
+                            <mat-select formControlName="moneda"
+                            name="moneda"  id="moneda" [(ngModel)]="cuentaBancaria.moneda" 
+                             >
+                         
+                                <mat-option [value]="">--Seleccione Tipo Moneda--</mat-option>
+                                <mat-option *ngFor="let a of monedaPostgre" [value]="a.descripcion">
+                                    {{a.descripcion}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorCampoMoneda()}}</mat-error> 
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Número de cuenta*</mat-label>
+                            <input formControlName="numerocuenta" 
+                            name="numerocuenta"  id="numerocuenta" [(ngModel)]="cuentaBancaria.numerocuenta"  
+                            matInput />
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Código de Cuenta Interbancario*</mat-label>
+                            <input formControlName="cci"
+                            name="cci"  id="cci" [(ngModel)]="cuentaBancaria.cci"  
+                            matInput />
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorCampoCci()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-12 text-right">
+                        <button mat-flat-button color="primary" style="margin:15px ;" [disabled]="form.invalid">
+                            Guardar Cambios
+                        </button>
+                        <a mat-stroked-button routerLink="/listar-cuenta-bancaria">
+                            Cancelar
+                        </a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>

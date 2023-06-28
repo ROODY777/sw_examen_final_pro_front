@@ -1,0 +1,31 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Edición de empleado</h3>
+    <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+        <div class="form-group">
+            <label>Nombre: </label>
+            <input type="text" class="form-control" id="nombres" [(ngModel)]="usuario.nombres" name="nombres"
+                placeholder="Ingrese su nombre " #nombres="ngModel" />
+        </div>
+        <div class="form-group">
+            <label>Apellido Paterno: </label>
+            <input type="text" class="form-control" id="apellidoPaterno" [(ngModel)]="usuario.apellidoPaterno"
+                name="apellidoPaterno" placeholder="Ingrese su apellido paterno" #apellidoPaterno="ngModel" />
+        </div>
+        <div class="form-group">
+            <label>Apellido Materno: </label>
+            <input type="text" class="form-control" id="apellidoMaterno" [(ngModel)]="usuario.apellidoMaterno"
+                name="apellidoMaterno" placeholder="Ingrese su apellido materno" #apellidoMaterno="ngModel" />
+        </div>
+        <div class="form-group">
+            <label for="">Teléfono: </label>
+            <input type="text" class="form-control" id="telefono" [(ngModel)]="usuario.telefono" name="telefono" 
+                name="telefono" placeholder="Ingrese su teléfono" #telefono="ngModel"/>
+        </div>
+        <div class="form-group">
+            <label for="">Correo electrónico: </label>
+            <input type="text" class="form-control" id="email" [(ngModel)]="usuario.email" name="email" 
+                name="email" placeholder="Ingrese su correo electrónico" #email="ngModel"/>
+        </div>
+        <button class="btn btn-success">Guardar</button>
+    </form>
+</div>

@@ -1,0 +1,89 @@
+<div class="contenedor">
+    <div class="contenedor1">
+        <img class="images" [src]="imageSrc" alt="Descripción de la imagen">
+        <div class="overlay">
+            <img [src]="imageSrcLogo" alt="">
+        </div>
+    </div>
+    <div class="contenedor2">
+        <div class="subcontenedor-formulario">
+            <div class="sub-con">
+                <div class="contenedor1_logo">
+                    <img [src]="imageSrcLogo2" alt="">
+                </div>
+                <h1 >Te damos la bienvenida</h1>
+                <h2 >Para comenzar, inicia sesión </h2>
+                <div class="contenedor-correo">
+                    <div class="input-correo-">
+                        <div class="icono-correo">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M222 801q63-44 125-67.5T480 710q71 0 133.5 23.5T739 801q44-54 62.5-109T820 576q0-145-97.5-242.5T480 236q-145 0-242.5 97.5T140 576q0 61 19 116t63 109Zm257.814-195Q422 606 382.5 566.314q-39.5-39.686-39.5-97.5t39.686-97.314q39.686-39.5 97.5-39.5t97.314 39.686q39.5 39.686 39.5 97.5T577.314 566.5q-39.686 39.5-97.5 39.5Zm.654 370Q398 976 325 944.5q-73-31.5-127.5-86t-86-127.266Q80 658.468 80 575.734T111.5 420.5q31.5-72.5 86-127t127.266-86q72.766-31.5 155.5-31.5T635.5 207.5q72.5 31.5 127 86t86 127.032q31.5 72.532 31.5 155T848.5 731q-31.5 73-86 127.5t-127.032 86q-72.532 31.5-155 31.5ZM480 916q55 0 107.5-16T691 844q-51-36-104-55t-107-19q-54 0-107 19t-104 55q51 40 103.5 56T480 916Zm0-370q34 0 55.5-21.5T557 469q0-34-21.5-55.5T480 392q-34 0-55.5 21.5T403 469q0 34 21.5 55.5T480 546Zm0-77Zm0 374Z" fill="#FFFFFF"/></svg>
+                        </div>
+                        <div class="input-correo">
+                            <input 
+                            type="text" 
+                            class="correo is-invalid"
+                            (focus)="correoFocus()"
+                            (blur)="correoBlur()"
+                            #inputCorreo
+                            [(ngModel)]="usuario.email" 
+                            (ngModelChange)="handleInputChangeEmail()"
+                            id="correo"
+                            >
+                            <div class="span-correo" id="span_correo" (click)="span_correoClick($event)">
+                                Correo
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="emailInvalid" class="error_text">El correo electrónico no es válido.</p>
+                    <p *ngIf="emailEmpty" class="error_text">Ingrese un correo electrónico.</p>
+                    <p *ngIf="emailExiste" class="error_text">El correo electrónico no existe.</p>
+                </div>
+                <div class="contenedor-contraseña">
+                    <div class="input-contraseña-">
+                        <div class="icono-contraseña">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M280 644q-28 0-48-20t-20-48q0-28 20-48t48-20q28 0 48 20t20 48q0 28-20 48t-48 20Zm0 172q-100 0-170-70T40 576q0-100 70-170t170-70q72 0 126 34t85 103h356l113 113-167 153-88-64-88 64-75-60h-51q-25 60-78.5 98.5T280 816Zm0-60q58 0 107-38.5t63-98.5h114l54 45 88-63 82 62 85-79-51-51H450q-12-56-60-96.5T280 396q-75 0-127.5 52.5T100 576q0 75 52.5 127.5T280 756Z" fill="#FFFFFF"/></svg>
+                        </div>
+                        <div class="input-contraseña">
+                            <input 
+                                type="password" 
+                                class="contraseña"
+                                (focus)="contrasenaFocus()"
+                                (blur)="contrasenaBlur()"
+                                #inputContraseña
+                                [(ngModel)]="usuario.contrasena" 
+                                (ngModelChange)="handleInputChangePassword()"
+                                id="contraseña"
+                                >
+                            <div class="contraseña-visibility">
+                                <span class="visibility" (click)="clickVisibility()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25" ><path d="M480.118 726Q551 726 600.5 676.382q49.5-49.617 49.5-120.5Q650 485 600.382 435.5q-49.617-49.5-120.5-49.5Q409 386 359.5 435.618q-49.5 49.617-49.5 120.5Q310 627 359.618 676.5q49.617 49.5 120.5 49.5Zm-.353-58Q433 668 400.5 635.265q-32.5-32.736-32.5-79.5Q368 509 400.735 476.5q32.736-32.5 79.5-32.5Q527 444 559.5 476.735q32.5 32.736 32.5 79.5Q592 603 559.265 635.5q-32.736 32.5-79.5 32.5ZM480 856q-146 0-264-83T40 556q58-134 176-217t264-83q146 0 264 83t176 217q-58 134-176 217t-264 83Zm0-300Zm-.169 240Q601 796 702.5 730.5 804 665 857 556q-53-109-154.331-174.5-101.332-65.5-222.5-65.5Q359 316 257.5 381.5 156 447 102 556q54 109 155.331 174.5 101.332 65.5 222.5 65.5Z" fill="#7F7F7F"/></svg>
+                                </span>
+                                <span class="no_visibility" (click)="clickNoVisibility()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="m629 637-44-44q26-71-27-118t-115-24l-44-44q17-11 38-16t43-5q71 0 120.5 49.5T650 556q0 22-5.5 43.5T629 637Zm129 129-40-40q49-36 85.5-80.5T857 556q-50-111-150-175.5T490 316q-42 0-86 8t-69 19l-46-47q35-16 89.5-28T485 256q143 0 261.5 81.5T920 556q-26 64-67 117t-95 93Zm58 226L648 827q-35 14-79 21.5t-89 7.5q-146 0-265-81.5T40 556q20-52 55.5-101.5T182 360L56 234l42-43 757 757-39 44ZM223 402q-37 27-71.5 71T102 556q51 111 153.5 175.5T488 796q33 0 65-4t48-12l-64-64q-11 5-27 7.5t-30 2.5q-70 0-120-49t-50-121q0-15 2.5-30t7.5-27l-97-97Zm305 142Zm-116 58Z" fill="#7F7F7F"/></svg>
+                                </span>
+                            </div>
+                            <div class="span-contraseña" id="span_contraseña" (click)="span_contrasenaClick($event)">
+                                Contraseña
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="passwordInvalid" class="error_text">La contraseña es incorrecto.</p>
+                    <p *ngIf="passwordEmpy" class="error_text">Ingrese una contraseña</p>
+                </div>
+                <div class="iniciar-sesion">
+                    <button 
+                        class="iniciar-sesion-button"
+                        (click)="handleClickIniciarSesion()"
+                        [disabled]="disableSubmitButton"
+                        >
+                        Iniciar Sesión
+                    </button>
+                </div>
+                <div class="registrate">
+                    <span>¿No tienes cuenta?, Regístrate</span>
+                    <span class="registrate_aqui" (click)="redireccionarRegistro()"> aquí</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

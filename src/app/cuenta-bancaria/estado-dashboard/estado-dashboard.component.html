@@ -1,0 +1,24 @@
+<div class="contenedor_estado">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+                <ul class="navbar-nav submenus_estado">
+                    <li class="nav-item">
+                        <a routerLink="movimiento" routerLinkActive="active" class="nav-link fs-5 sub_titulos_estado">Movimiento</a>
+                    </li>
+                    <li class="nav-item" class="nav-link fs-5  sub_titulos_estado" >
+                        <a routerLink="estado-cuenta-bancaria" routerLinkActive="active" class="nav-link fs-5  sub_titulos_estado">Cuenta Bancaria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="transferencia-cuenta-bancaria" routerLinkActive="active" class="nav-link fs-5 sub_titulos_estado">Depositar y retirar</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container_2">
+    <div class="sub_container_2">
+        <router-outlet></router-outlet>
+    </div>
+</div>

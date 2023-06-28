@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Ingresa tu factura</h1>
+<div mat-dialog-content>
+    <form (submit)="cargarArchivo($event)">
+        <input type="file" (change)="onArchivoSeleccionado($event)" hidden #fileInput>
+        <div class="input-group mb-2">
+            <button mat-stroked-button (click)="fileInput.click()">Seleccionar archivo</button>
+            <input matInput disabled type="text" [value]="archivoSeleccionado?.name">
+            <button mat-raised-button color="primary" (click)="cargarArchivo($event)">Cargar Factura XML</button>
+        </div>
+    </form>
+</div>

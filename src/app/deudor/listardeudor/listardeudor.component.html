@@ -1,0 +1,46 @@
+<h2>Lista Deudor</h2>
+
+<button class="mb-3" mat-flat-button color="primary" routerLink="/registrar-deudor">
+    Crear nuevo Deudor
+</button>
+<mat-divider></mat-divider>
+<br />
+
+<div class="grideee col-12 col-sm-12 " style="margin-right: 5%; justify-content: center;">
+
+    <div *ngFor="let cuenta of deudor" style="margin: 3px;">
+
+        <mat-card class="example-card mb-3">
+
+            <mat-card-header>
+                <mat-card-subtitle>Id : {{cuenta.id}}</mat-card-subtitle>
+                <mat-card-title>Nombre : <mat-chip>{{cuenta.nombre}}</mat-chip>
+                </mat-card-title>
+                <mat-card-title>Apellidos : <mat-chip>{{cuenta.apellidos}}</mat-chip>
+                </mat-card-title>
+                <mat-card-title>Correo : <mat-chip>{{cuenta.correo}}</mat-chip>
+                </mat-card-title>
+                <mat-card-title>Telefono : <mat-chip>{{cuenta.telefono}}</mat-chip>
+                </mat-card-title>
+                 <mat-card-title>Cargo de Empresa : <mat-chip>
+                    {{cuenta.cargoEmpresaDeudor.cargoempresa}}</mat-chip> 
+                </mat-card-title> 
+            </mat-card-header>
+            <br />
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+                   <button mat-flat-button color="primary" style="margin:15px ;" 
+            [routerLink]="['/actualizar-deudor',cuenta.id]">
+              Editar 
+          </button> 
+                    <button mat-flat-button color="warn" style="margin:15px ;" 
+          name="eliminar" (click)='delete(cuenta)'>
+            Eliminar
+        </button> 
+            </mat-card-actions>
+        </mat-card>
+
+    </div>
+</div>
+
+<br />

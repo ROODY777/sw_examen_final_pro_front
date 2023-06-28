@@ -1,0 +1,320 @@
+<div class="container_detalle">
+    <div class="subcontainer_detalle">
+        <h2 *ngIf="this.tipoUsuario=='Inversionista'?true:false" class="detalles_h2">Detalles Personales</h2>
+        <h2 *ngIf="this.tipoUsuario=='Inversionista'?false:true" class="detalles_h2">Detalle Empresarial</h2>
+        <span class="detalles_span">Actualice su información</span>
+        <div>
+            <div *ngIf="this.tipoUsuario=='Inversionista'?true:false" class="detalle_nombre_completo">
+                <div class="detalle_nombre_span">
+                    <div class="detalle_nombre_span_secundario">
+                        <span>Nombre</span>
+                    </div>
+                </div>
+                <div class="detalle_nombre_s">
+                    <span *ngIf="editar_nombre">{{this.usuario.nombres}}</span>
+                    <input 
+                        *ngIf="cancelar_nombre"
+                        type="text" 
+                        class="nombre"
+                        [(ngModel)]="this.usuario.nombres"
+                        (ngModelChange)="handleInputChangeNombre()"
+                        (focus)="NombreFocus()"
+                        (blur)="NombreBlur()"
+                        id="nombre"
+                    >
+                    <p *ngIf="nameInvalid" id="nombre_invalido" class="error_text">El nombre no es válido.</p>
+                    <p *ngIf="nameEmpy" id="nombre_empty" class="error_text">Ingrese un nombre.</p>
+                </div>
+                <div   class="detalle_editar_nombre">
+                    <span *ngIf="editar_nombre"  class="detalle_editar_nombre_span" id="editar_nombre" (click)="handleClickEditarNombre()">Editar</span>
+                    <div *ngIf="cancelar_nombre" class="div_guar_can_nombre">
+                        <span  class="detalle_guardar_nombre_span"  (click)="handleClickGuardarNombre()">Guardar</span>
+                        <span  class="detalle_cancelar_nombre_span"  (click)="handleClickCancelarNombre()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.tipoUsuario=='Inversionista'?false:true" class="detalle_razonSocial_completo">
+                <div class="detalle_razonSocial_span">
+                    <div class="detalle_razonSocial_span_secundario">
+                        <span>Razón Social</span>
+                    </div>
+                </div>
+                <div class="detalle_razonSocial_s">
+                    <span *ngIf="editar_razonSocial">{{this.usuario.razonSocial}}</span>
+                    <input 
+                        *ngIf="cancelar_razonSocial"
+                        type="text" 
+                        class="razonSocial"
+                        [(ngModel)]="this.usuario.razonSocial"
+                        (ngModelChange)="handleInputChangerazonSocial()"
+                        (focus)="razonSocialFocus()"
+                        (blur)="razonSocialBlur()"
+                        id="razonSocial"
+                    >
+                    <p *ngIf="razonSocialInvalid" id="razonSocial_invalido" class="error_text">La razón social no es válido.</p>
+                    <p *ngIf="razonSocialEmpy" id="razonSocial_empty" class="error_text">Ingrese una razón social.</p>
+                </div>
+                <div   class="detalle_editar_razonSocial">
+                    <span *ngIf="editar_razonSocial"  class="detalle_editar_razonSocial_span" id="editar_razonSocial" (click)="handleClickEditarrazonSocial()">Editar</span>
+                    <div *ngIf="cancelar_razonSocial" class="div_guar_can_razonSocial">
+                        <span  class="detalle_guardar_razonSocial_span"  (click)="handleClickGuardarrazonSocial()">Guardar</span>
+                        <span  class="detalle_cancelar_razonSocial_span"  (click)="handleClickCancelarrazonSocial()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div *ngIf="this.tipoUsuario=='Inversionista'?true:false" class="detalle_apellidoPaterno_completo">
+                <div class="detalle_apellidoPaterno_span">
+                    <div class="detalle_apellidoPaterno_span_secundario">
+                        <span>Apellido Paterno</span>
+                    </div>
+                </div>
+                <div class="detalle_apellidoPaterno_s">
+                    <span *ngIf="editar_apellidoPaterno">{{this.usuario.apellidoPaterno}}</span>
+                    <input 
+                        *ngIf="cancelar_apellidoPaterno"
+                        type="text" 
+                        class="apellidoPaterno"
+                        [(ngModel)]="this.usuario.apellidoPaterno"
+                        (ngModelChange)="handleInputChangeapellidoPaterno()"
+                        (focus)="apellidoPaternoFocus()"
+                        (blur)="apellidoPaternoBlur()"
+                        id="apellidoPaterno"
+                    >
+                    <p *ngIf="apellidoPaternoInvalid" id="apellidoPaterno_invalido" class="error_text">El apellido paterno no es válido.</p>
+                    <p *ngIf="apellidoPaternoEmpy" id="apellidoPaterno_empty" class="error_text">Ingrese un apellido paterno.</p>
+                </div>
+                <div   class="detalle_editar_apellidoPaterno">
+                    <span *ngIf="editar_apellidoPaterno"  class="detalle_editar_apellidoPaterno_span" id="editar_apellidoPaterno" (click)="handleClickEditarApellidoPaterno()">Editar</span>
+                    <div *ngIf="cancelar_apellidoPaterno" class="div_guar_can_apellidoPaterno">
+                        <span  class="detalle_guardar_apellidoPaterno_span"  (click)="handleClickGuardarapellidoPaterno()">Guardar</span>
+                        <span  class="detalle_cancelar_apellidoPaterno_span"  (click)="handleClickCancelarapellidoPaterno()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.tipoUsuario=='Inversionista'?false:true" class="detalle_actividadComercial_completo">
+                <div class="detalle_actividadComercial_span">
+                    <div class="detalle_actividadComercial_span_secundario">
+                        <span>Actividad Comercial</span>
+                    </div>
+                </div>
+                <div class="detalle_actividadComercial_s">
+                    <span *ngIf="editar_actividadComercial">{{this.usuario.actividadcomercial}}</span>
+                    <input 
+                        *ngIf="cancelar_actividadComercial"
+                        type="text" 
+                        class="actividadComercial"
+                        [(ngModel)]="this.usuario.actividadcomercial"
+                        (ngModelChange)="handleInputChangeactividadComercial()"
+                        (focus)="actividadComercialFocus()"
+                        (blur)="actividadComercialBlur()"
+                        id="actividadComercial"
+                    >
+                    <p *ngIf="actividadComercialInvalid" id="actividadComercial_invalido" class="error_text">Actividad comercial no es válido.</p>
+                    <p *ngIf="actividadComercialEmpy" id="actividadComercial_empty" class="error_text">Ingrese una actividad comercial.</p>
+                </div>
+                <div   class="detalle_editar_actividadComercial">
+                    <span *ngIf="editar_actividadComercial"  class="detalle_editar_actividadComercial_span" id="editar_actividadComercial" (click)="handleClickEditaractividadComercial()">Editar</span>
+                    <div *ngIf="cancelar_actividadComercial" class="div_guar_can_actividadComercial">
+                        <span  class="detalle_guardar_actividadComercial_span"  (click)="handleClickGuardaractividadComercial()">Guardar</span>
+                        <span  class="detalle_cancelar_actividadComercial_span"  (click)="handleClickCancelaractividadComercial()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div *ngIf="this.tipoUsuario=='Inversionista'?true:false" class="detalle_apellidoMaterno_completo">
+                <div class="detalle_apellidoMaterno_span">
+                    <div class="detalle_apellidoMaterno_span_secundario">
+                        <span>Apellido Materno</span>
+                    </div>
+                </div>
+                <div class="detalle_apellidoMaterno_s">
+                    <span *ngIf="editar_apellidoMaterno">{{this.usuario.apellidoMaterno}}</span>
+                    <input 
+                        *ngIf="cancelar_apellidoMaterno"
+                        type="text" 
+                        class="apellidoMaterno"
+                        [(ngModel)]="this.usuario.apellidoMaterno"
+                        (ngModelChange)="handleInputChangeapellidoMaterno()"
+                        (focus)="apellidoMaternoFocus()"
+                        (blur)="apellidoMaternoBlur()"
+                        id="apellidoMaterno"
+                    >
+                    <p *ngIf="apellidoMaternoInvalid" id="apellidoMaterno_invalido" class="error_text">El apellido materno no es válido.</p>
+                    <p *ngIf="apellidoMaternoEmpy" id="apellidoMaterno_empty" class="error_text">Ingrese un apellido materno.</p>
+                </div>
+                <div   class="detalle_editar_apellidoMaterno">
+                    <span *ngIf="editar_apellidoMaterno"  class="detalle_editar_apellidoMaterno_span" id="editar_apellidoMaterno" (click)="handleClickEditarApellidoMaterno()">Editar</span>
+                    <div *ngIf="cancelar_apellidoMaterno" class="div_guar_can_apellidoMaterno">
+                        <span  class="detalle_guardar_apellidoMaterno_span"  (click)="handleClickGuardarapellidoMaterno()">Guardar</span>
+                        <span  class="detalle_cancelar_apellidoMaterno_span"  (click)="handleClickCancelarapellidoMaterno()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.tipoUsuario=='Inversionista'?false:true" class="detalle_ruc_completo">
+                <div class="detalle_ruc_span">
+                    <div class="detalle_ruc_span_secundario">
+                        <span>Ruc</span>
+                    </div>
+                </div>
+                <div class="detalle_ruc_s">
+                    <span *ngIf="editar_ruc">{{this.usuario.ruc}}</span>
+                    <input 
+                        *ngIf="cancelar_ruc"
+                        type="text" 
+                        class="ruc"
+                        [(ngModel)]="this.usuario.ruc"
+                        (ngModelChange)="handleInputChangeruc()"
+                        (focus)="rucFocus()"
+                        (blur)="rucBlur()"
+                        id="ruc"
+                    >
+                    <p *ngIf="rucInvalid" id="ruc_invalido" class="error_text">Ruc no es válido.</p>
+                    <p *ngIf="rucEmpy" id="ruc_empty" class="error_text">Ingrese un ruc.</p>
+                    <p *ngIf="rucExiste" class="error_text">Ruc ya existe.</p>
+                </div>
+                <div   class="detalle_editar_ruc">
+                    <span *ngIf="editar_ruc"  class="detalle_editar_ruc_span" id="editar_ruc" (click)="handleClickEditarruc()">Editar</span>
+                    <div *ngIf="cancelar_ruc" class="div_guar_can_ruc">
+                        <span  class="detalle_guardar_ruc_span"  (click)="handleClickGuardarruc()">Guardar</span>
+                        <span  class="detalle_cancelar_ruc_span"  (click)="handleClickCancelarruc()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="detalle_correo_completo">
+                <div class="detalle_correo_span">
+                    <div class="detalle_correo_span_secundario">
+                        <span>Correo</span>
+                    </div>
+                </div>
+                <div class="detalle_correo_s">
+                    <span *ngIf="editar_correo">{{this.usuario.email}}</span>
+                    <input 
+                        *ngIf="cancelar_correo"
+                        type="text" 
+                        class="correo"
+                        [(ngModel)]="this.usuario.email"
+                        (ngModelChange)="handleInputChangecorreo()"
+                        (focus)="correoFocus()"
+                        (blur)="correoBlur()"
+                        id="correo"
+                    >
+                    <p *ngIf="correoInvalid" id="correo_invalido" class="error_text">El correo no es válido.</p>
+                    <p *ngIf="correoEmpy" id="correo_empty" class="error_text">Ingrese un correo.</p>
+                    <p *ngIf="emailExiste" class="error_text">El correo electrónico ya existe.</p>
+                </div>
+                <div   class="detalle_editar_correo">
+                    <span *ngIf="editar_correo"  class="detalle_editar_correo_span" id="editar_correo" (click)="handleClickEditarcorreo()">Editar</span>
+                    <div *ngIf="cancelar_correo" class="div_guar_can_correo">
+                        <span  class="detalle_guardar_correo_span"  (click)="handleClickGuardarcorreo()">Guardar</span>
+                        <span  class="detalle_cancelar_correo_span"  (click)="handleClickCancelarcorreo()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="detalle_direccion_completo">
+                <div class="detalle_direccion_span">
+                    <div class="detalle_direccion_span_secundario">
+                        <span>Direccion</span>
+                    </div>
+                </div>
+                <div class="detalle_direccion_s">
+                    <span *ngIf="editar_direccion">{{this.usuario.direccion}}</span>
+                    <input 
+                        *ngIf="cancelar_direccion"
+                        type="text" 
+                        class="direccion"
+                        [(ngModel)]="this.usuario.direccion"
+                        (ngModelChange)="handleInputChangedireccion()"
+                        (focus)="direccionFocus()"
+                        (blur)="direccionBlur()"
+                        id="direccion"
+                    >
+                    <p *ngIf="direccionInvalid" id="direccion_invalido" class="error_text">El direccion no es válido.</p>
+                    <p *ngIf="direccionEmpy" id="direccion_empty" class="error_text">Ingrese una direccion.</p>
+                </div>
+                <div   class="detalle_editar_direccion">
+                    <span *ngIf="editar_direccion"  class="detalle_editar_direccion_span" id="editar_direccion" (click)="handleClickEditardireccion()">Editar</span>
+                    <div *ngIf="cancelar_direccion" class="div_guar_can_direccion">
+                        <span  class="detalle_guardar_direccion_span"  (click)="handleClickGuardardireccion()">Guardar</span>
+                        <span  class="detalle_cancelar_direccion_span"  (click)="handleClickCancelardireccion()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="detalle_celular_completo">
+                <div class="detalle_celular_span">
+                    <div class="detalle_celular_span_secundario">
+                        <span>Celular</span>
+                    </div>
+                </div>
+                <div class="detalle_celular_s">
+                    <span *ngIf="editar_celular">{{this.usuario.telefono}}</span>
+                    <input 
+                        *ngIf="cancelar_celular"
+                        type="text" 
+                        class="celular"
+                        [(ngModel)]="this.usuario.telefono"
+                        (ngModelChange)="handleInputChangecelular()"
+                        (focus)="celularFocus()"
+                        (blur)="celularBlur()"
+                        id="celular"
+                    >
+                    <p *ngIf="celularInvalid" id="celular_invalido" class="error_text">El celular no es válido.</p>
+                    <p *ngIf="celularEmpy" id="celular_empty" class="error_text">Ingrese una celular.</p>
+                </div>
+                <div   class="detalle_editar_celular">
+                    <span *ngIf="editar_celular"  class="detalle_editar_celular_span" id="editar_celular" (click)="handleClickEditarcelular()">Editar</span>
+                    <div *ngIf="cancelar_celular" class="div_guar_can_celular">
+                        <span  class="detalle_guardar_celular_span"  (click)="handleClickGuardarcelular()">Guardar</span>
+                        <span  class="detalle_cancelar_celular_span"  (click)="handleClickCancelarcelular()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div *ngIf="this.tipoUsuario=='Inversionista'?false:true" class="detalle_descripcion_completo">
+                <div class="detalle_descripcion_span">
+                    <div class="detalle_descripcion_span_secundario">
+                        <span>Descripcion</span>
+                    </div>
+                </div>
+                <div class="detalle_descripcion_s">
+                            <p *ngIf="editar_descripcion" >aksdhjkasdhkjsagdashdhslkdajksdjkalsdjklashdkjsahdkjashdkjashdkjhasjkdhaskjdhasjkdhjaskdhjaskdhjkasdhjksahdkjashdlkashdkjasd</p>
+                            
+                            <textarea 
+                                *ngIf="cancelar_descripcion"
+                                type="text" 
+                                class="descripcion"
+                                [(ngModel)]="this.usuario.descripcion"
+                                (ngModelChange)="handleInputChangedescripcion()"
+                                (focus)="descripcionFocus()"
+                                (blur)="descripcionBlur()"
+                                id="descripcion"
+                            >
+                            </textarea>
+                            <p *ngIf="descripcionInvalid" id="descripcion_invalido" class="error_text">El descripcion no es válido.</p>
+                            <p *ngIf="descripcionEmpy" id="descripcion_empty" class="error_text">Ingrese una descripcion.</p>
+                    
+                </div>
+                <div   class="detalle_editar_descripcion">
+                    <span *ngIf="editar_descripcion"  class="detalle_editar_descripcion_span" id="editar_descripcion" (click)="handleClickEditardescripcion()">Editar</span>
+                    <div *ngIf="cancelar_descripcion" class="div_guar_can_descripcion">
+                        <span  class="detalle_guardar_descripcion_span"  (click)="handleClickGuardardescripcion()">Guardar</span>
+                        <span  class="detalle_cancelar_descripcion_span"  (click)="handleClickCancelardescripcion()">Cancelar</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

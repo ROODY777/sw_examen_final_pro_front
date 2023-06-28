@@ -1,0 +1,60 @@
+<div class="abrir-modal animacion fadeIn" *ngIf="modalService.modal"  >
+
+<div class="modal" tabindex="-1" role="dialog" style="display: block;">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalle Cuenta bancaria</h5>
+          <button (click)="cerrarModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="col-sm">
+                    <ul *ngIf="cuentaBancaria" class="list-group-text-dark">
+                        <li class="list-group-item active"> <strong>id :</strong> {{cuentaBancaria.id}}</li>
+                        <li class="list-group-item"><strong>Número de Cuenta bancaria :</strong> {{cuentaBancaria.numerocuenta}}</li>
+                        <li class="list-group-item"><strong>Nombres : </strong> {{cuentaBancaria.cuentaUsuario.nombres}}</li>
+                        <li class="list-group-item"><strong>CCI :</strong> {{cuentaBancaria.cci}}</li>
+                        <li class="list-group-item"><strong>Moneda :</strong> {{cuentaBancaria.moneda}}</li>
+                        <li class="list-group-item"><strong>Banco :</strong> {{cuentaBancaria.banco}}</li>
+                        <li class="list-group-item"><strong>Tipo Cuenta bancaria :</strong> {{cuentaBancaria.tipoCuentaBancaria.descripcion}}</li>
+                        <li class="list-group-item"><strong>Encabezado de Estado de cuenta bancaria : </strong></li>
+                    </ul>
+                 
+                    <div class="input-group"  mb-3>
+                        <input (change)="seleccionarFoto($event)" type="file" class="form-control" id="inputGroupFile04"
+                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button (click)="subirFoto()" [disabled]="!fotoSeleccionada"
+                         class="btn btn-outline-secondary" type="button"
+                            id="inputGroupFileAddon04">Subir Foto</button>
+                    </div>
+                </div>
+
+                <br>
+                <div *ngIf="progreso > 0" class="progress" style="height: 40px;" mb-3>
+                    <div class="progress-bar" role="progressbar" [ngStyle]="{width: progreso+ '%'}" 
+                    attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">{{progreso}}%</div>
+                  </div>
+
+                <div class="col-sm">
+                    <img  *ngIf="cuentaBancaria?.archivo" 
+                    style="width: 450px;max-width: 450px;height: 400px; "
+                    src="http://localhost:8081/cuenta/uploads/img/{{cuentaBancaria.archivo}}"
+                     alt="{{cuentaBancaria.archivo}}" class="img-thumbnail rounded">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="cerrarModal()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,188 @@
+<div class="abrir-modal  animacion fadeIn" *ngIf="modalService.modal">
+
+  <div class="modal " tabindex="-1" role="dialog" style="display: block;">
+      <div class="modal-dialog modal-xl d-flex" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 >Detalle Subasta</h5>
+            <button (click)="cerrarModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body ">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm" style="border: 2px Dotted #c0c0c0; padding: 5px;">
+                      <ul *ngIf="subastaa" class="list-group-text-dark">
+                        <li class="list-group-item active"> <strong>id :</strong> {{subastaa.id}}</li>
+                        <li class="list-group-item active"> <strong>Subasta Tipo :</strong> {{subastaa.tiposubasta}}</li>
+                        <li class="list-group-item active"> <strong>Riesgo Tipo :</strong> {{subastaa.riesgo}}</li>
+                        <li class="list-group-item active"> <strong>Fecha de Pago :</strong> {{subastaa.fechapago | date: 'dd/MM/yyyy'}} <span class="px-2 bg-secondary-subtle rounded-4">{{dias}} días</span></li>
+                      <!--   <li class="list-group-item active"> <strong>Monto Pendiente :</strong> {{subastaa.montopendiente}}</li>
+                        <li class="list-group-item active" style="color: blue;font-size: 20px;"> <strong>Monto Total :</strong> <strong>{{subastaa.montototal}}</strong></li>
+                        -->
+                        <div class="ponds">
+                          <li class="list-group-item active" style="color: Teal ;font-size: 18px;"> <strong>Monto Pendiente :</strong> <strong>S/. {{subastaa.montopendiente | number : '1.0-2'}}</strong></li>
+                         
+                         
+                          <li class="list-group-item active" style="color: orange ;font-size: 18px;"> <strong>Financiado : </strong> <strong>S/. {{subastaa.montototal - subastaa.montopendiente | number : '1.0-2'}}</strong></li>
+                         
+                          <li class="list-group-item active" style="color: blue;font-size: 18px;"> <strong>Monto Total :</strong>
+                            <strong> S/. {{subastaa.montototal}}</strong></li>
+  
+                            
+                       
+                         </div> 
+                     
+                      </ul>
+                  </div>
+              </div>
+              <div style="margin-top: 15px; color: blue;">
+                <h4 ></h4>
+              </div>
+            <!--   Segunda tabla  -->
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    <strong>  Facturas Relacionados a la Operación :</strong>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                  <div class="accordion-body">
+                    <div class="row">
+                      <table class="table table-bordered table-striped my-4">
+                        <thead>
+                          <th>Id </th>
+                          <th>Fecha emision</th>
+                          <th>Fecha Pago </th>
+                          <th>Monto Total </th>
+                          <th>Razon Social Cliente</th>
+                          <th>Ruc Cliente</th>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let suba of subastaa.facturas">
+                            <td>{{suba.id}}</td>
+                            <td>{{suba.fechaemision | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{suba.fechapago | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{suba.monto}}</td>
+                            <td>{{suba.razonsocialcliente}}</td>
+                            <td>{{suba.ruccliente}}</td>
+                          </tr>
+                        </tbody>
+                      </table> 
+                    </div> 
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                      <strong> Informacion General de La Empresa :</strong>
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                      <div class="row">
+                        <div class="col-sm" style="border: 2px Dotted #c0c0c0; padding: 5px;">
+                            <ul *ngIf="subastaa" class="list-group-text-dark">
+                              <li class="list-group-item active"> <strong>Razon Social :</strong> {{subastaa.cuentaUsuario.razonSocial}}</li>
+                              <li class="list-group-item active"> <strong>RUC :</strong> {{subastaa.cuentaUsuario.ruc}}</li>
+                              <li class="list-group-item active"> <strong>Actividad Comercial :</strong> {{subastaa.cuentaUsuario.actividadcomercial}}</li>
+                              <li class="list-group-item active"> <strong>Descripción :</strong> {{subastaa.cuentaUsuario.descripcion}}</li>
+                              <li class="list-group-item active"> <strong>Dirección :</strong> {{subastaa.cuentaUsuario.direccion}}</li>
+                            </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!----->
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                      <strong> Ranking de compromiso de inversión :</strong>
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                      <div class="row">
+                        <table class="table table-bordered table-striped my-4">
+                          <thead>
+                            <th>Id </th>
+                            <th>Posición Fecha y Hora</th>
+                            <th>Inversión(PEN) % de factura </th>
+                            <th>Retorno Mensual %</th>
+                            <!-- <th>TIR</th> -->
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let suba of subastaa.inversiones">
+                              <td>{{suba.id}}</td>
+                              <td>{{suba.fecha | date: 'dd/MM/yyyy'}} | {{suba.fecha | date: 'HH:mm:ss a'}}</td>
+                              <td>{{suba.monto }}  | {{suba.porcentaje}}%</td>
+                              <td>{{suba.retornomensual}}%</td>
+                              <!-- <td>{{suba.id}}</td> -->
+                             
+                            </tr>
+                          </tbody>
+                        </table> 
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            </div>
+          </div> 
+          <div class="modal-footer">
+            <button type="button" (click)="cerrarModal()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+        <!-- Inversión  -->
+        <div class="modal-content w-50 p-3">
+          <div class="row">
+            <div class="col d-flex align-items-center">
+              <p class="float-start">Invertir</p>
+            </div>
+            <div class="col float-end">
+              <p class="text-end m-0">Tu saldo disponible</p>
+              <p class="text-end m-0 fw-bold">S/.{{saldo || 'S/.0.00'}} </p>
+            </div>
+          </div>
+          <hr class="mt-0">
+          <p class="mb-0 ">Escribe el monto de tu inversión</p>
+          <mat-form-field class="w-100">
+            <p class="m-0" matTextPrefix>S/.</p>
+            <input matInput type="number" placeholder="¿Cuánto quieres invertir?" [(ngModel)]="inversion.monto" (input)="actualizarGanancia()">
+            <p class="m-0" matTextSuffix>{{inversion.porcentaje || 0.00}}%</p>
+          </mat-form-field>
+          <div class="d-flex mb-2">
+            <p class="me-auto fs-6 opacity-75 lh-1 m-0">Retorno final mensual</p>
+            <p class="ms-auto fw-bold fs-5 text-primary lh-1 m-0">{{inversion.retornomensual.toFixed(2)}}%</p>
+          </div>
+          <div class="d-flex mb-2">            
+            <p class="me-auto fs-6 opacity-75 lh-1 m-0">Ganancia máxima</p>
+            <p class="ms-auto fw-bold fs-5 text-primary lh-1 m-0">S/.{{inversion.ganancia || 0.00}}</p>
+          </div>
+          <button class="float-end"  type="submit" color="primary" mat-raised-button (click)="registrarInversion()">Realizar inversión</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,53 @@
+<div class="d-flex flex-column justify-content-center align-items-center h-100 m-3">
+    <form class="d-flex flex-column w-75" > 
+        <h1 class="text-center p-0 m-0 lh-1">Registro de factura</h1>
+        <hr>
+        <mat-form-field>
+            <mat-label>RUC de la empresa deudora</mat-label>
+            <input matInput disabled [(ngModel)]="rucdeudor" [ngModelOptions]="{standalone: true}">
+            <mat-icon matTextSuffix>lock</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Razón social</mat-label>
+            <input matInput disabled [(ngModel)]="razondeudor" [ngModelOptions]="{standalone: true}">
+            <mat-icon matTextSuffix>lock</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Monto total de la factura</mat-label>
+            <input matInput disabled [(ngModel)]="monto" [ngModelOptions]="{standalone: true}">
+            <mat-icon matTextSuffix>lock</mat-icon>
+        </mat-form-field>
+        <section>
+            <label class="fs-5 ">Indica si tu factura está afecta a:</label>
+            <mat-form-field>
+                <mat-label>Tipo de impuesto</mat-label>
+                <mat-select [(ngModel)]="tipofactura" [ngModelOptions]="{standalone: true}">
+                    <mat-option value="Detraccion">Detracción</mat-option>
+                    <mat-option value="Retencion">Retención</mat-option>
+                    <mat-option value="Percepcion">Percepción</mat-option>
+                    <mat-option value="Ninguno">Ninguno</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </section>
+        <mat-form-field>
+            <mat-label>Número de factura</mat-label>
+            <input matInput disabled [(ngModel)]="numfactura" [ngModelOptions]="{standalone: true}">
+            <mat-icon matTextSuffix>lock</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Fecha de emisión</mat-label>
+            <input matInput disabled [matDatepicker]="picker_emision" [(ngModel)]="fechaemision" [ngModelOptions]="{standalone: true}">
+            <mat-icon matIconSuffix>lock</mat-icon>
+            <mat-datepicker #picker_emision></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Fecha de pago</mat-label>
+            <input matInput [matDatepicker]="picker_pago" [(ngModel)]="fechapago" [ngModelOptions]="{standalone: true}">
+            <mat-hint>La fecha en la que tu deudor pagará la factura</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker_pago"></mat-datepicker-toggle>
+            <mat-datepicker #picker_pago></mat-datepicker>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" class="btn btn-primary mt-3 w-50" (click)="registrarFactura()">Registrar factura</button>
+    </form>
+</div>
+

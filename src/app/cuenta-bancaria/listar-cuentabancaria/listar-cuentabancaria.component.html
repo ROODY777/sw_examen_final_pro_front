@@ -1,0 +1,94 @@
+<app-estado-cuenta-bancaria slider></app-estado-cuenta-bancaria>
+
+<!-- <div class="containerUsuario">
+ <div class="subContainerUsuario"> -->
+   <div class="containerUsuario">
+     <div class="subContainerUsuario">
+   <h2>Lista Cuenta Bancaria</h2>
+   <hr>
+   <div class="contenedor_estado_cuenta">
+
+   
+   <app-detalle *ngIf="cuentaBancariaSeleccionada" [cuentaBancaria] ="cuentaBancariaSeleccionada"></app-detalle>
+   
+   <div class="grideee col-12 col-sm-12 " style="margin-right: 5%; justify-content: center;"
+   >
+   <!--     <div class="col-12 col-sm-12 col-md-6 col-xl-4 grid bm-8 pt-2" 
+       style="display:flex ;justify-content: space-between; 
+       margin-left: 25px;
+       " 
+       
+       > -->
+         <div *ngFor="let cuenta of cuentaBancaria"  style="margin: 3px;">
+   
+   
+           <mat-card class="example-card mb-3">
+             
+             <mat-card-header 
+             >
+               <mat-card-subtitle>Id : {{cuenta.id}}</mat-card-subtitle>
+               <mat-card-title>Número de cuenta : <mat-chip>{{cuenta.numerocuenta}}</mat-chip></mat-card-title>
+               <mat-card-title>Banco : <mat-chip>{{cuenta.banco}}</mat-chip></mat-card-title>
+               <mat-card-title>Moneda : <mat-chip>{{cuenta.moneda}}</mat-chip></mat-card-title>
+               <mat-card-title>Tipo cuenta bancaria : <mat-chip>{{cuenta.tipoCuentaBancaria.descripcion}}</mat-chip></mat-card-title>
+               <mat-card-title>CCI : <mat-chip>{{cuenta.cci}}</mat-chip></mat-card-title>
+             </mat-card-header>
+             <br/>
+             <mat-divider></mat-divider>
+   
+             <mat-card-actions >
+   
+   
+               
+              <!--  <button mat-flat-button color="primary" style="margin:15px ;" 
+               [routerLink]="['/cuentaBancaria/ver/',cuenta.id]">
+                  Subir Encabezado de Estado cuenta Bancaria
+             </button> -->
+              
+          <img 
+           *ngIf="cuenta?.archivo"
+          src="http://localhost:8081/cuenta/uploads/img/{{cuenta.archivo}}"
+           alt="{{cuenta.archivo}}" class="img-thumbnail rounded"
+           style="width: 64px;max-width: 64px;height: 52px; ">
+          <!--  <h5 *ngIf="cuenta?.archivo">Subir Encabezado de Estado cuenta Bancaria</h5>  -->
+   
+           <img  
+           *ngIf="!cuenta?.archivo"
+           src="http://localhost:8081/images/no-img.png"
+            alt="sin foto" class="img-thumbnail rounded"
+            style="width: 64px;max-width: 64px;height: 52px; ">
+   
+            <button mat-stroked-button color="primary" style="margin:15px ;" 
+             (click)="abrirModal(cuenta)">
+             <mat-icon>cloud_upload</mat-icon>Subir Archivo Encabezado cuenta bancaria
+          </button> 
+             </mat-card-actions>
+   
+             <mat-divider></mat-divider>
+             <mat-card-actions >
+          
+          <!--   <button mat-flat-button color="primary" style="margin:15px ;" 
+             [routerLink]="['/estado-dashboard/estado-cuenta-bancaria/actualizar-cuenta-bancaria',cuenta.id]">
+               Editar 
+           </button>  -->
+   
+             <button mat-flat-button color="warn" style="margin:15px ;" 
+             name="eliminar" (click)='delete(cuenta)'
+             >
+               Eliminar
+           </button>
+             </mat-card-actions>
+           </mat-card>  
+         
+          
+         </div>
+       </div>
+    <!--  </div> -->
+   <br/>
+   </div>
+ </div>
+ </div>
+ <!-- </div>
+</div> -->
+
+

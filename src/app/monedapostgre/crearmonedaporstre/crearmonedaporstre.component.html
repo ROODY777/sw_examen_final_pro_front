@@ -1,0 +1,41 @@
+
+<h4>Crear Moneda</h4>
+<hr />
+<div class="container-fluid abs-center">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+
+            <form (submit)="guardarCambios()" [formGroup]="form">
+
+             
+
+                <div class="row" style="font-size: 15px">
+                    <div class="col-sm-12 col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Moneda</mat-label>
+                            <input formControlName="moneda"
+                            name="moneda"  id="moneda" [(ngModel)]="moneda.descripcion"  
+                            matInput />
+                            <mat-error *ngIf="form.invalid">{{obtenerErrorBanco()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-12 text-right">
+                        <button mat-flat-button color="primary" style="margin:15px ;" [disabled]="form.invalid">
+                            Guardar Cambios
+                        </button>
+                        <a mat-stroked-button routerLink="/listar-moneda-postgre">
+                            Cancelar
+                        </a>
+                       
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>

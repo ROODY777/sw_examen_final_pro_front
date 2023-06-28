@@ -1,0 +1,308 @@
+<div class="contenedor">
+    <div class="contenedor1">
+            <img class="images" [src]="imageSrc" alt="Descripción de la imagen">
+            <div class="overlay">
+                <img [src]="imageSrcLogo" alt="">
+              </div>
+    </div>
+    <div class="contenedor2">
+        <div class="subcontenedor-formulario">
+            <div class="sub-con">
+                <div class="contenedor1_logo">
+                        <img [src]="imageSrcLogo2" alt="">
+                </div>
+                <h1>Registra tu nueva cuenta </h1>
+                <div class="contenedor-tipoPerfil">
+
+                    <div class="input_tipoPerfil">
+                        <h2>Selecciona tu perfil</h2>
+                        <div class="tipoPerfil">
+                            <div class="perfil_inversionista" (click)="inversionista()">
+                                <span>
+                                    Inversionista
+                                </span>
+                                <input type="radio" [checked]="perfilInversion" class="perfil_i" name="perfil" value="inversionista" >
+                            </div>
+                            <div class="perfil_empresa" (click)="empresa()">
+                                <span>
+                                    Empresa
+                                </span>
+                                <input type="radio" [checked]="perfilEmpresa" class="perfil_e" name="perfil" value="empresa" >
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="contenedor-correo">
+                    <div class="input-correo-">
+                        <div class="input-correo">
+                            <input 
+                            type="text" 
+                            class="correo"
+                            (focus)="correoFocus()"
+                            (blur)="correoBlur()"
+                            #inputCorreo
+                            [(ngModel)]="usuario.email" 
+                            (ngModelChange)="handleInputChangeEmail()"
+                            id="correo"
+                            [disabled]="disableInput"
+                            >
+                            <div  class="span-correo" id="span_correo" (click)="span_correoClick($event)">
+                                Correo
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="emailInvalid" id="email_invalido" class="error_text">El correo electrónico no es válido.</p>
+                    <p *ngIf="emailEmpty" id="email_empty" class="error_text">Ingrese un correo electrónico.</p>
+                    <p *ngIf="emailExiste" class="error_text">El correo electrónico ya existe.</p>
+                </div>
+                <div class="contenedor-contraseña">
+                    <div class="input-contraseña-">
+                        <div class="input-contraseña">
+                            <input 
+                                type="password" 
+                                class="contraseña"
+                                (focus)="contrasenaFocus()"
+                                (blur)="contrasenaBlur()"
+                                #inputContraseña
+                                [(ngModel)]="usuario.contrasena" 
+                                (ngModelChange)="handleInputChangePassword()"
+                                id="contraseña"
+                                [disabled]="disableInput"
+                                >
+                            <div class="contraseña-visibility">
+                                <span class="visibility" (click)="clickVisibility()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25" ><path d="M480.118 726Q551 726 600.5 676.382q49.5-49.617 49.5-120.5Q650 485 600.382 435.5q-49.617-49.5-120.5-49.5Q409 386 359.5 435.618q-49.5 49.617-49.5 120.5Q310 627 359.618 676.5q49.617 49.5 120.5 49.5Zm-.353-58Q433 668 400.5 635.265q-32.5-32.736-32.5-79.5Q368 509 400.735 476.5q32.736-32.5 79.5-32.5Q527 444 559.5 476.735q32.5 32.736 32.5 79.5Q592 603 559.265 635.5q-32.736 32.5-79.5 32.5ZM480 856q-146 0-264-83T40 556q58-134 176-217t264-83q146 0 264 83t176 217q-58 134-176 217t-264 83Zm0-300Zm-.169 240Q601 796 702.5 730.5 804 665 857 556q-53-109-154.331-174.5-101.332-65.5-222.5-65.5Q359 316 257.5 381.5 156 447 102 556q54 109 155.331 174.5 101.332 65.5 222.5 65.5Z" fill="#7F7F7F"/></svg>
+                                </span>
+                                <span class="no_visibility" (click)="clickNoVisibility()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="m629 637-44-44q26-71-27-118t-115-24l-44-44q17-11 38-16t43-5q71 0 120.5 49.5T650 556q0 22-5.5 43.5T629 637Zm129 129-40-40q49-36 85.5-80.5T857 556q-50-111-150-175.5T490 316q-42 0-86 8t-69 19l-46-47q35-16 89.5-28T485 256q143 0 261.5 81.5T920 556q-26 64-67 117t-95 93Zm58 226L648 827q-35 14-79 21.5t-89 7.5q-146 0-265-81.5T40 556q20-52 55.5-101.5T182 360L56 234l42-43 757 757-39 44ZM223 402q-37 27-71.5 71T102 556q51 111 153.5 175.5T488 796q33 0 65-4t48-12l-64-64q-11 5-27 7.5t-30 2.5q-70 0-120-49t-50-121q0-15 2.5-30t7.5-27l-97-97Zm305 142Zm-116 58Z" fill="#7F7F7F"/></svg>
+                                </span>
+                            </div>
+                            <div class="span-contraseña" id="span_contraseña" (click)="span_contrasenaClick($event)">
+                                Contraseña
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="passwordInvalid" id="contraseña_invalido" class="error_text">La contraseña debe tener al menos 8 caracteres y contener al menos una letra mayúscula, una letra minúscula y un número</p>
+                    <p *ngIf="passwordEmpy" id="contraseña_empty" class="error_text">Ingrese una contraseña</p>
+                </div>
+                <div *ngIf="nameEnable" class="contenedor-nombre">
+                    <div class="input-nombre-">
+                        <div  class="input-nombre">
+                            <input 
+                            type="text" 
+                            class="nombre"
+                            (focus)="nombreFocus()"
+                            (blur)="nombreBlur()"
+                            #inputNombre
+                            [(ngModel)]="usuario.nombres" 
+                            (ngModelChange)="handleInputChangeNombre()"
+                            id="nombre"
+                            [disabled]="disableInput"
+                            >
+                            <div class="span-nombre" id="span_nombre"   (click)="span_nombreClick($event)">
+                                Nombre
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="nameInvalid" id="nombre_invalido" class="error_text">El nombre no es válido.</p>
+                    <p *ngIf="nameEmpy" id="nombre_empty" class="error_text">Ingrese un nombre.</p>
+                </div>
+
+                <div *ngIf="apellidoPaternoEnable" class="contenedor-apellidoPaterno">
+                    <div class="input-apellidoPaterno-">
+                        <div class="input-apellidoPaterno">
+                            <input 
+                            type="text" 
+                            class="apellidoPaterno"
+                            (focus)="apellidoPaternoFocus()"
+                            (blur)="apellidoPaternoBlur()"
+                            #inputApellidoPaterno
+                            [(ngModel)]="usuario.apellidoPaterno" 
+                            (ngModelChange)="handleInputChangeApellidoPaterno()"
+                            id="apellidoPaterno"
+                            [disabled]="disableInput"
+                            >
+                            <div class="span-apellidoPaterno" id="span_apellidoPaterno" (click)="span_apellidoPaternoClick($event)">
+                                Apellido Paterno
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="apellidoPaternoInvalid" id="apellidoPaterno_invalido" class="error_text">El Apellido Paterno no es válido.</p>
+                    <p *ngIf="apellidoPaternoEmpy" id="apellidoPaterno_empty" class="error_text">Ingrese un Apellido Paterno.</p>
+                </div>
+
+                <div *ngIf="apellidoMaternoEnable" class="contenedor-apellidoMaterno">
+                    <div class="input-apellidoMaterno-">
+                        <div class="input-apellidoMaterno">
+                            <input 
+                            type="text" 
+                            class="apellidoMaterno"
+                            (focus)="apellidoMaternoFocus()"
+                            (blur)="apellidoMaternoBlur()"
+                            #inputApellidoMaterno
+                            [(ngModel)]="usuario.apellidoMaterno" 
+                            (ngModelChange)="handleInputChangeApellidoMaterno()"
+                            id="apellidoMaterno"
+                            [disabled]="disableInput"
+                            >
+                            <div class="span-apellidoMaterno" id="span_apellidoMaterno" (click)="span_apellidoMaternoClick($event)">
+                                Apellido Materno
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="apellidoMaternoInvalid" id="apellidoMaterno_invalido" class="error_text">El Apellido Materno no es válido.</p>
+                    <p *ngIf="apellidoMaternoEmpy" id="apellidoMaterno_empty" class="error_text">Ingrese un Apellido Materno.</p>
+                </div>
+
+                <div class="contenedor-direccion">
+                    <div class="input-direccion-">
+                        <div class="input-direccion">
+                            <input 
+                            type="text" 
+                            class="direccion"
+                            (focus)="direccionFocus()"
+                            (blur)="direccionBlur()"
+                            #inputDireccion
+                            [(ngModel)]="usuario.direccion" 
+                            (ngModelChange)="handleInputChangeDireccion()"
+                            id="direccion"
+                            [disabled]="disableInput"
+                            >
+                            <div class="span-direccion" id="span_direccion" (click)="span_direccionClick($event)">
+                                Direccion
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="direccionInvalid" id="direccion_invalido" class="error_text">La direccion no es válido.</p>
+                    <p *ngIf="direccionEmpy" id="direccion_empty" class="error_text">Ingrese una direccion.</p>
+                </div>
+                
+                <div *ngIf="rucEnable" class="contenedor-ruc">
+                    <div class="input-ruc-">
+                        <div class="input-ruc">
+                            <input 
+                            type="text" 
+                            class="ruc"
+                            (focus)="rucFocus()"
+                            (blur)="rucBlur()"
+                            #inputRuc
+                            [(ngModel)]="usuario.ruc" 
+                            (ngModelChange)="handleInputChangeRuc()"
+                            id="ruc"
+                            [disabled]="disableInput"
+                            >
+                            <div class="span-ruc" id="span_ruc" (click)="span_rucClick($event)">
+                                Ruc
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="rucInvalid" id="ruc_invalido" class="error_text">El Ruc no es válido.</p>
+                    <p *ngIf="rucEmpy" id="ruc_empty" class="error_text">Ingrese un Ruc.</p>
+                    <p *ngIf="rucExiste" class="error_text">El Ruc ya existe.</p>
+                </div>
+
+                <div *ngIf="razonsocialEnable" class="contenedor-razonsocial">
+                    <div class="input-razonsocial-">
+                        <div class="input-razonsocial">
+                            <input 
+                            type="text" 
+                            class="razonsocial"
+                            (focus)="razonsocialFocus()"
+                            (blur)="razonsocialBlur()"
+                            #inputRazonsocial
+                            [(ngModel)]="usuario.razonSocial" 
+                            (ngModelChange)="handleInputChangeRazonsocial()"
+                            id="razonsocial"
+                            [disabled]="disableInput"
+                            >
+                            <div class="span-razonsocial" id="span_razonsocial" (click)="span_razonsocialClick($event)">
+                                Razon Social
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="razonsocialInvalid" id="razonSocial_invalido" class="error_text">La Razon Social no es válido.</p>
+                    <p *ngIf="razonsocialEmpy" id="razonSocial_empty" class="error_text">Ingrese una Razon Social.</p>
+                </div>
+
+                <div *ngIf="actividadcomercialEnable" class="contenedor-actividadcomercial">
+                    <div class="input-actividadcomercial-">
+                        <div class="input-actividadcomercial">
+                            <input 
+                            type="text" 
+                            class="actividadcomercial"
+                            (focus)="actividadcomercialFocus()"
+                            (blur)="actividadcomercialBlur()"
+                            #inputActividadcomercial
+                            [(ngModel)]="usuario.actividadcomercial" 
+                            (ngModelChange)="handleInputChangeactividadcomercial()"
+                            id="actividadcomercial"
+                            [disabled]="disableInput"
+                            >
+                            <div class="span-actividadcomercial" id="span_actividadcomercial" (click)="span_actividadcomercialClick($event)">
+                                Actividad Comercial
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="actividadcomercialInvalid" id="actividadComercial_invalido" class="error_text">La Actividad Comercial no es válido.</p>
+                    <p *ngIf="actividadcomercialEmpy" id="actividadComercial_empty" class="error_text">Ingrese una Actividad Comercial.</p>
+                </div>
+
+                <div *ngIf="descripcionEnable" class="contenedor-descripcion">
+                    <div class="input-descripcion-">
+                        <div class="span-descripcion" id="span_descripcion" (click)="span_descripcionClick($event)">
+                            Descripcion
+                        </div>
+                        <div class="descripcion_contenedor">
+
+                            <textarea name="" (focus)="descripcionFocus()" (blur)="descripcionBlur()" [(ngModel)]="usuario.descripcion"  id="descripcion" #inputDescripcion class="descripcion" ></textarea>
+                        </div>
+                    </div>
+                    <p *ngIf="descripcionInvalid" id="descripcion_invalido" class="error_text">La Descripcion no es válido.</p>
+                    <p *ngIf="descripcionEmpy" id="descripcion_empty" class="error_text">Ingrese una Descripcion.</p>
+                </div>
+
+                <div class="contenedor-telefono">
+                    <div class="input-telefono-">
+                        <div class="input-telefono">
+                            <input 
+                            type="text" 
+                            class="telefono"
+                            (focus)="telefonoFocus()"
+                            (blur)="telefonoBlur()"
+                            #inputTelefono
+                            [(ngModel)]="usuario.telefono" 
+                            (ngModelChange)="handleInputChangeTelefono()"
+                            id="telefono"
+                            [disabled]="disableInput"
+                            >
+                            <div class="span-telefono" id="span_telefono" (click)="span_telefonoClick($event)">
+                                Telefono
+                            </div>
+                        </div>
+                    </div>
+                    <p *ngIf="telefonoInvalid" id="telefono_invalido" class="error_text">El teléfono no es válido.</p>
+                    <p *ngIf="telefonoEmpy" id="telefono_empty" class="error_text">Ingrese un teléfono.</p>
+                </div>
+                <div class="TerminosC">
+                    <input type="checkbox" id="mi-checkbox">
+                    <span>Acepto los TyC y las politicas de privacidad.</span>
+                </div>
+                <div class="registrar">
+                    <button 
+                        class="registrar-button"
+                        (click)="handleClickRegistrar()"
+                        [disabled]="disableSubmitButton"
+                        >
+                        Registrar
+                    </button>
+                </div>
+                <div class="iniciarSesion">
+                    <span>¿Ya tienes cuenta?, Inicia Sesión</span>
+                    <span class="iniciaSesion_aqui" (click)="redireccionarIniciarSesion()"> aquí</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

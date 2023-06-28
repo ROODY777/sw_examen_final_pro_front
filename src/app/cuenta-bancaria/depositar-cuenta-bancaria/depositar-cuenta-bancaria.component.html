@@ -1,0 +1,80 @@
+<div class="modal-dialog" role="document">
+    <div *ngIf="currentTemplate === 'tipoDepositoTemplate'" class="modal-content">
+        <div class="modal-header d-flex justify-content-center align-items-center">
+            <h5 class="modal-title ">Depositar</h5>
+        </div>
+        <div class="modal-body">
+            <div class="form-group pb-3">
+                <label for="moneda">Cuenta de retiro</label>
+                <select class="form-select" id="moneda" name="moneda">
+                    <option>{{movimiento.moneda}}</option>
+                </select>
+            </div>
+            <div class="form-group pb-3">
+                <label for="cuenta">Cuenta de bancaria</label>
+                <select class="form-select" id="cuenta" name="cuenta" [(ngModel)]="cuentaSeleccionada" (change)="seleccionarCuenta()">
+                    <option *ngFor="let opcion of opciones" [value]="opcion.id">{{opcion.descripcion}}</option>
+                </select>
+            </div>
+            <div class="form-group pb-3">
+                <label for="monto">Monto a depositar</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="movimiento.monto"
+                        placeholder="¿Cuánto quieres depositar?">
+                </div>
+            </div>
+            <p class="fw-bold mb-0">Declaración jurada de origen de fondos</p>
+            <div class="form-check ms-2">
+                <input class="form-check-input" type="checkbox" name="USD" id="USD" [(ngModel)]="firmado">
+                <label class="form-check-label" for="USD">Firmar declaración</label>
+            </div>
+            <button type="submit" (click)="onBancoDeposito()" class="btn btn-primary float-end">Siguiente</button>
+        </div>
+    </div>
+    <div *ngIf="currentTemplate === 'bancoDepositoTemplate'" class="modal-content">
+        <div class="modal-header d-flex justify-content-center align-items-center">
+            <h5 class="modal-title ">Depositar</h5>
+        </div>
+        <div class="modal-body">
+            <h5 class="mb-1">Realizar depósito en banco</h5>
+            <hr class="mt-0">
+            <p style="font-size: 14px;">Realizar una transferencia a la siguiente cuenta. Incluyendo el código único en el
+                campo de descripción de la transferencia. No se aceptan depósitos en ventanilla
+                ni transferencias internacionales, solo transferencias bancarias nacionales.
+            </p>
+            <div class="row">
+                <div class="col-md-5">
+                    <p class="mb-1">Beneficiario</p>
+                    <p class="mb-1">RUC</p>
+                    <p class="mb-1">Número de cuenta</p>
+                    <p class="mb-1">Banco</p>
+                    <p class="mb-1">CCI</p>
+                    <p class="mb-1">Descripción</p>
+                    <p class="mb-1">Moneda</p>
+                    <p class="mb-1">Monto</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <p class="fw-bold mb-1">Facturedo PE SAC</p>
+                    <p class="fw-bold mb-1">20601762243</p>
+                    <p class="fw-bold mb-1">{{cuentaAdmin.numerocuenta}}</p>
+                    <p class="fw-bold mb-1">{{bancoSeleccionado}}</p>
+                    <p class="fw-bold mb-1">{{cuentaAdmin.cci}}</p>
+                    <p class="fw-bold mb-1">7d1ffec5</p>
+                    <p class="fw-bold mb-1">{{movimiento.moneda}}</p>
+                    <p class="fw-bold mb-1 text-primary" >${{movimiento.monto}}</p>
+                </div>
+                <h5 class="mb-1">Adjuntar constancia de transferencia</h5>
+                <hr class="mt-0">
+                <div class="mb-3">
+                    <label for="inputFile" class="form-label">Adjunta la constancia de transferencia:</label>
+                    <input type="file" class="form-control" id="image" accept="image/*" (change)="upload($event)">
+                    <div class="mx-auto mt-2 w-50 h-200" *ngIf="url">
+                        <img [src]="url" alt="" class="img-fluid img-thumbnail">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary float-end mt-2 me-3" (click)="confirmarPago()">Continuar</button>
+        </div>
+    </div>
+</div>

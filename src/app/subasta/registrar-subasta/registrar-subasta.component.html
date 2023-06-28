@@ -1,0 +1,67 @@
+<div class="w-100 d-flex" style="height: 90%;">
+    <div class="w-75 border shadow m-3 bg-white">
+        <div class="m-3">
+            <h1 class="">Subir facturas</h1>
+            <hr>
+            <p class="mt-3 fs-5 fw-medium opacity-75">Facturas de la operación</p>
+            <p><span class="fs-6 opacity-75">Deudor: </span><span class="fw-bold fs-6">{{deudor}}</span></p>
+            <div class="m-3 d-flex justify-content-between flex-wrap">
+                <div class="card-factura" *ngFor="let factura of facturas">
+                    <div class="d-flex mb-2">
+                        <p class="me-auto fs-6 opacity-75 lh-1 m-0">Monto</p>
+                        <p class="ms-auto fw-bold fs-5 text-primary lh-1 m-0">{{factura.monto}}</p>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <p class="me-auto fs-6 opacity-75 lh-1 m-0">Factura No.</p>
+                        <p class="ms-auto fs-6 fw-bold lh-1 m-0">{{factura.numfactura}}</p>
+                    </div>
+                    <br>
+                    <p class="me-auto fs-6 opacity-75 lh-1 m-0">Fecha de pago</p>
+                    <div class="d-flex mt-2">
+                        <p class="fs-6 fw-bold opacity-75 lh-1 m-0">{{factura.fechapago}}</p>
+                        <mat-icon class="ms-auto">delete</mat-icon>
+                    </div>
+                </div>
+                <div class="card-factura btn" (click)="openModal()">
+                    <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                        <p class="fs-5 m-0">Subir XML</p>
+                        <p class="fs-1 m-0 text-primary">+</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="w-25 border shadow m-3 bg-white">
+        <div class="m-3">
+            <p class="fs-5 fw-medium mb-1">Costos de estimación de tu operación</p>
+            <p class="fs-6 fw-medium opacity-75">Modelo de subasta</p>
+            <mat-radio-group class="d-flex flex-column mb-3" [(ngModel)]="subasta.tiposubasta">
+                <mat-radio-button value="Velocidad"><p class="fs-6 fw-bold m-0">Velocidad</p></mat-radio-button>
+                <p class="lh-1 fw-medium opacity-75 ms-5">Recibe tu dinero lo más rápido posible</p>
+                <mat-radio-button value="Costos"><p class="fs-6 fw-bold m-0">Costos</p></mat-radio-button>
+                <p class="lh-1 fw-medium opacity-75 ms-5">Reduce al mínimo los costos de tu operación</p>
+            </mat-radio-group>
+            <mat-form-field style="width: 120px;">
+                <mat-label>Riesgo</mat-label>
+                <mat-select [(ngModel)]="subasta.riesgo">
+                    <mat-option value="A">A</mat-option>
+                    <mat-option value="B">B</mat-option>
+                    <mat-option value="C">C</mat-option>
+                    <mat-option value="D">D</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Retorno</mat-label>
+                <input matInput type="number" placeholder="00.00" value="00.00" [(ngModel)]="subasta.retorno">
+            </mat-form-field>
+            <div class="d-flex">
+                <p class="me-auto fs-6 opacity-75">Monto total</p>
+                <p class="ms-auto fw-bold fs-5 text-primary">${{subasta.montototal}}</p>
+            </div>            
+            <div class="d-flex">
+                <button mat-raised-button color="primary" type="submit" (click)="registrarSubasta()" class="btn btn-primary ms-auto mt-3">Registrar subasta</button>
+            </div>
+        </div>
+    </div>
+</div>

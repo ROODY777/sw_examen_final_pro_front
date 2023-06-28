@@ -1,0 +1,41 @@
+.button {
+    margin-right: 1rem;
+}
+mat-form-field{
+    width: 100%;
+    max-width: 500px;
+}
+
+/* .abs-center { */
+    /* margin-left: 25%;  */
+   /*   display: flex;
+    justify-content: center;  */
+  /* } */
+
+  .containerUsuario{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.subContainerUsuario{
+    width: 75%;
+    height: auto;
+    /* background-color:rgb(159, 152, 141); */
+    padding-top: 10px;
+    padding-left: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.contenedor_estado_cuenta{
+    margin-top:20px ;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}

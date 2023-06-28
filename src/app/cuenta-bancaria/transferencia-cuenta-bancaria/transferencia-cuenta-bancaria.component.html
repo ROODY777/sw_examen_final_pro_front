@@ -1,0 +1,29 @@
+<div class="d-flex flex-column justify-content-center align-items-center shadow bg-white" style="height: 70vh">
+    <h2 class="text-center">Saldo actual</h2>
+    <div class="row my-5">
+        <div class="col text-center izq">
+            <h3 class="title mb-0 text-secondary font-weight-light">
+                USD
+            </h3>
+            <h2 class="font-weight-bold">${{montoUSD}}</h2>
+        </div>
+        <div class="col text-center der">
+            <h3 class="title mb-0 text-secondary font-weight-light">
+                PEN
+            </h3>
+            <h2 class="font-weight-bold">S/{{montoPEN}}</h2>
+        </div>
+    </div>
+    <div>
+        <button type="button" class="btn btn-secondary me-5 px-4" data-bs-toggle="modal"
+            data-bs-target="#retirarModal">Retirar</button>
+        <button type="button" class="btn btn-primary ms-5 px-4" data-bs-toggle="modal"
+            data-bs-target="#depositarModal">Depositar</button>
+    </div>
+    <div class="modal fade" id="depositarModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <app-depositar-cuenta-bancaria></app-depositar-cuenta-bancaria>
+    </div>
+    <div class="modal fade" id="retirarModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <app-retirar-cuenta-bancaria></app-retirar-cuenta-bancaria>
+    </div>
+</div>

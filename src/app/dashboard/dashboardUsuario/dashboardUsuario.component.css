@@ -1,0 +1,145 @@
+.containerUsuario{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subContainerUsuario{
+    
+    width: 80%;
+    height: auto;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.contenedor_estado_cuenta{
+    margin-top:20px ;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.h3_estado_cuenta{
+    font-size: 18px;
+    color:darkgrey;
+}
+
+.div_cuenta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.div_cuenta_container{
+    width: 40%;
+}
+
+.div_cuenta_saldo{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px 0px 10px;
+}
+
+.div_cuenta_total{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+
+/* Oportunidad de Inversion */
+.contenedor_oportunidad{
+    margin-top:20px ;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.h3_oportunidad{
+    font-size: 18px;
+    color:darkgrey;
+}
+
+.div_oportunidad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.div_oportunidad_container{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.oportunidad{
+    width: 100%;
+    text-align: center;
+    border-right: 1px solid darkgray;
+}
+.deudores{
+    width: 100%;
+    text-align: center;
+    border-right: 1px solid darkgray;
+}
+.total_operaciones{
+    width: 100%;
+    text-align: center;
+}
+
+.nro_oportunidad{
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    color:gray;
+}
+.oportunidad_1{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    color:rgb(62, 62, 62);
+}
+
+.nro_deudores{
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    color:gray;
+}
+.deudores_1{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    color:rgb(62, 62, 62);
+}
+
+.nro_total_operaciones{
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    color:gray;
+}
+.total_operaciones{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    color:rgb(62, 62, 62);
+}

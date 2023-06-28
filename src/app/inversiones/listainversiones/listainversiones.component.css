@@ -1,0 +1,55 @@
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 16px;
+  }
+
+  
+  .mat-row{
+    height: 10px !important;
+  }
+
+  .mat-mdc-table {
+    width: 100%;
+    max-height: 500px;
+    overflow: auto;
+  }
+  
+  .mat-column-id{
+    flex: 0 0 5%;
+  }
+  .mat-column-monto{
+    flex: 0 0 15%;
+  }
+/*   .mat-column-id {
+    height: 5%;
+  } */
+
+  .mat-column-id {
+    height: 50px;
+  }
+  .mat-column-ganancia {
+    height: 50px;
+  }
+  .mat-column-monto {
+    height: 50px;
+  }
+  .mat-column-retornomensual {
+    height: 50px;
+  }
+
+  .mat-column-estado {
+    height: 50px;
+  }
+  .mat-column-fecha {
+    height: 50px;
+  }
+  .mat-column-cuentaUsuario {
+    height: 50px;
+  }
+  .mat-column-idsubasta {
+    height: 50px;
+  }
+
+  td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}

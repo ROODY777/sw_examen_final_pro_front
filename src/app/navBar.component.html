@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row">
+      <div *ngIf="usuario" class="col-2 vh-100 text-bg-dark">
+        <div  class="d-flex flex-column flex-shrink-0 h-100">
+          <a href="/" class="text-center text-blue fs-3 my-4 text-decoration-none">{{title}}</a>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a routerLink="usuarios" routerLinkActive="active" class="nav-link">Lista de usuarios</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="registrar-usuario" routerLinkActive="active" class="nav-link">Registrar usuario</a>            
+            </li>
+            <li class="nav-item">
+              <a routerLink="registrar-cuenta-bancaria" routerLinkActive="active" class="nav-link">Cuenta bancaria</a>
+            </li>
+          </ul>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-2">
+            <li class="nav-item">
+              <a routerLink="estado-dashboard" routerLinkActive="active" class="nav-link">Estado de cuenta</a>
+            </li>
+          </ul>
+          <p class="mb-3 navbar-text">Usuario: <a>{{usuario.nombres}}</a></p> 
+        </div>
+      </div>
+      <div class="col vh-100 ">
+        <div class="">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>

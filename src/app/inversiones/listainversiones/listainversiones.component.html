@@ -1,0 +1,64 @@
+<h2>Lista de mis Inversiones</h2>
+
+<mat-radio-group aria-label="Select an option">
+  <mat-radio-button value="Todos"[(ngModel)]="cobranzangModel"(change)="inversionesListaXIdCuentaUsuarioll()">Todos</mat-radio-button>
+  <mat-radio-button value="En cobranza"[(ngModel)]="cobranzangModel"(change)="inversionesListaXIdCuentaUsuarioaa($event)" >En cobranza</mat-radio-button>
+  <mat-radio-button value="cobrado" [(ngModel)]="cobranzangModel"(change)="inversionesListaXIdCuentaUsuarioaa($event)">cobrado</mat-radio-button>
+</mat-radio-group> 
+
+
+
+<div class="col-12">
+  <div class="mat-elevation-z8">
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource" style="width: 100%;  text-align: center;">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef style="width: 100%">id</th>
+      <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.id  }}</td>
+    </ng-container>
+    <ng-container matColumnDef="monto">
+        <th mat-header-cell *matHeaderCellDef style="width: 100%">Monto Invertido S/. y<br> Representacion en %</th>
+        <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.monto }} | {{ aux.porcentaje  }}%</td>
+      </ng-container> 
+        <ng-container matColumnDef="ganancia">
+          <th mat-header-cell *matHeaderCellDef style="width: 100%">Ganancia S/.</th>
+          <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.ganancia  }}</td>
+        </ng-container> 
+       
+        <!-- <ng-container matColumnDef="porcentaje">
+            <th mat-header-cell *matHeaderCellDef style="width: 100%">Porcentaje</th>
+            <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.porcentaje  }}%</td>
+          </ng-container>  -->
+        <ng-container matColumnDef="retornomensual">
+          <th mat-header-cell *matHeaderCellDef style="width: 100%">Retorno Mensual %</th>
+          <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.retornomensual  }}%</td>
+        </ng-container> 
+
+        <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef style="width: 100%">Estado</th>
+            <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.estado  }}</td>
+          </ng-container> 
+      
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef style="width: 100%">Fecha y Hora</th>
+            <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.fecha | date: 'dd/MM/yyyy'}} | {{ aux.fecha | date: 'HH:mm:ss a' }}</td>
+          </ng-container> 
+
+
+        <ng-container matColumnDef="cuentaUsuario">
+          <th mat-header-cell *matHeaderCellDef style="width: 100%">Cuenta de Usuario</th>
+          <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.cuentaUsuario.nombres  }}</td>
+        </ng-container> 
+        <ng-container matColumnDef="idsubasta">
+          <th mat-header-cell *matHeaderCellDef style="width: 100%">Id Subasta</th>
+          <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.subasta.id  }}</td>
+        </ng-container> 
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 30]" showFirstLastButtons></mat-paginator>
+
+</div>
+  
+</div> 

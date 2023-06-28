@@ -1,0 +1,85 @@
+<div class="modal-dialog" role="document">
+    <div *ngIf="currentTemplate === 'retiroTemplate'" class="modal-content">
+        <div class="modal-header d-flex justify-content-center align-items-center">
+            <h5 class="modal-title ">Retirar</h5>
+        </div>
+        <div class="modal-body">
+            <div class="row my-2">
+                <div class="col text-center izq">
+                    <h5 class="title mb-0 text-secondary font-weight-light opacity-50">
+                        USD
+                    </h5>
+                    <h4 class="font-weight-bold">${{montoUSD}}</h4>
+                    <p class="opacity-50">Saldo disponible</p>
+                </div>
+                <div class="col text-center der">
+                    <h5 class="title mb-0 text-secondary font-weight-light opacity-50">
+                        PEN
+                    </h5>
+                    <h4 class="font-weight-bold">S/{{montoPEN}}</h4>
+                    <p class="opacity-50">Saldo disponible</p>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <form>
+                    <div class="form-group pb-3">
+                        <label for="cuenta-retiro">Cuenta de retiro</label>
+                        <select class="form-select" id="cuenta-retiro" name="cuenta-retiro" [(ngModel)]="movimiento.moneda" (change)="seleccionarCuenta()">
+                            <option value="USD">USD</option>
+                            <option value="PEN">PEN</option>
+                        </select>
+                    </div>
+                    <div class="form-group pb-3">
+                        <label for="input-amount">Escribe el monto de retiro</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="movimiento.monto" [min]="MONTO_MIN"
+                                placeholder="¿Cuánto quieres retirar?">
+                        </div>
+                    </div>
+                    <button type="submit" (click)="onRetiroExitoso()"class="btn btn-primary float-end">Retirar</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="currentTemplate === 'retiroExitosoTemplate'" class="modal-content">
+        <div class="modal-header d-flex justify-content-center align-items-center">
+            <h5 class="modal-title ">Retiro</h5>
+        </div>
+        <div class="modal-body">
+            <p>Transacción</p>
+            <hr>
+            <div class="row m-0">
+                <p class="p-0">El retiro fue creado con éxito. Dentro de las próximas 24h se instruirá
+                    al banco para realizar la transferencia.
+                </p>
+                <p class="p-0">Detalle de su retiro:</p>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-1">Monto retiro</p>
+                        <p class="mb-1 fs-5 fw-bold text-primary">${{movimiento.monto}}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-1 text-end">Moneda</p>
+                        <p class="fw-bold mb-1 text-end">{{movimiento.moneda}}</p>
+                    </div>
+                    <div class="mt-2 col-md-6">
+                        <p class="mb-0">Banco</p>
+                        <p class="mb-0">Cuenta</p>
+                        <p class="mb-0">Estado</p>
+                    </div>
+                    <div class="mt-2 col-md-6">
+                        <p class="fw-bold mb-0 text-end">{{movimiento.cuentaBancariaUsuario.banco.descripcion}}</p>
+                        <p class="fw-bold mb-0 text-end">{{movimiento.cuentaBancariaUsuario.numerocuenta}}</p>
+                        <p class="fw-bold mb-0 text-end">{{movimiento.estado}}</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary float-end mt-2 me-3" (click)="crearMovimiento()">Continuar</button>
+        </div>
+    </div>
+</div>

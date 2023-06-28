@@ -1,0 +1,48 @@
+button {
+    margin-right: 1rem;
+}
+
+mat-form-field{
+    width: 100%;
+    max-width: 500px;
+}
+
+.mat-column-id {
+    flex: 0 0 30%;
+  }
+.mat-column-acciones {
+    flex: 0 0 35%;
+  }
+  .mat-column-descripcion {
+    flex: 0 0 35%;
+  }
+
+  table{
+    width: 100%;
+   }
+
+  .mat-column-id 
+  { height: 50px; } 
+  .mat-column-descripcion 
+  { height: 50px; } 
+  .mat-column-acciones 
+  { height: 40px;}
+
+
+  button {
+    margin-left: 1rem;
+}
+
+  .table-row {
+    height: 50px !important;
+  }
+
+
+
+  .mat-row{
+    height: 150% !important;
+  }
+
+
+
+  

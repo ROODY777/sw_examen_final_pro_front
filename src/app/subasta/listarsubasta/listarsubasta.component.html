@@ -1,0 +1,44 @@
+
+<h2>Lista Subasta</h2>
+
+<!-- <button class="mb-3" mat-flat-button color="primary" routerLink="#">
+    Crear nueva Subasta
+</button> -->
+
+
+ <h2>Oportunidades de Inverión : Lista de Subastas</h2>
+
+ <mat-divider></mat-divider>
+
+<br />
+<app-detallesubasta *ngIf="subastaSeleccionada" [subastaa]="subastaSeleccionada"></app-detallesubasta>
+<div class="grideee col-12 col-sm-12 " style="margin-right: 5%; justify-content: center;">
+    <div *ngFor="let cuenta of subasta" style="margin: 3px;">
+        <mat-card class="example-card mb-3 shadow" >
+            <mat-card-header >
+                <mat-card-subtitle>Id Subasta : {{cuenta.id}}</mat-card-subtitle>
+                <mat-card-title>Empresa : <mat-chip>{{cuenta.cuentaUsuario.razonSocial}}</mat-chip>
+                </mat-card-title>
+                <mat-card-title>Subasta Tipo : <mat-chip>{{cuenta.tiposubasta}}</mat-chip>
+                </mat-card-title>
+                <mat-card-title>Riesgo Tipo: <mat-chip>{{cuenta.riesgo}}</mat-chip>
+                </mat-card-title>
+                <mat-card-title>Fecha de Pago : <mat-chip>{{cuenta.fechapago | date: 'dd/MM/yyyy'}}</mat-chip>
+                </mat-card-title>
+                <mat-card-title>Monto Pendiente : <mat-chip > {{cuenta.montopendiente  | number : '1.0-2'}}</mat-chip>
+                </mat-card-title> 
+                <mat-card-title>Monto Total : <mat-chip style="background-color: #ffd700;"> {{cuenta.montototal | number : '1.0-2'}}</mat-chip>
+                </mat-card-title>
+            </mat-card-header>
+            <br />
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+                <button mat-flat-button color="primary" style="margin:15px ;" (click)="abrirModal(cuenta)">
+                    Ver Detalles
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div> 
+
+<br />

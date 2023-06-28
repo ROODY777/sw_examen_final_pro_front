@@ -1,0 +1,54 @@
+<h2>Lista de Monedas</h2>
+
+<button mat-flat-button color="primary" routerLink="/crearMonedaPostgre" style="margin: 15px;">
+  Crear nueva Moneda
+</button>
+
+<div class="col-12">
+  <div class="mat-elevation-z8 ">
+  <mat-table class=" mat-elevation-z8 " [dataSource]="dataSource" style="width: 100%;  text-align: center;">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef style="width: 100%">id</th>
+      <td mat-cell *matCellDef="let aux" style="width: 100%">{{ aux.id  }}</td>
+    </ng-container>
+    <ng-container matColumnDef="descripcion" class="table-row">
+        <th mat-header-cell *matHeaderCellDef style="width: 100%" class="table-row">Descripción</th>
+        <td mat-cell *matCellDef="let aux" style="height: 100%" class="table-row">{{ aux.descripcion }} </td>
+      </ng-container> 
+       
+
+
+
+      <ng-container matColumnDef="acciones" class="table-row">
+        <th mat-header-cell *matHeaderCellDef style="width: 100%"class="table-row">Acciones</th>
+        <td mat-cell *matCellDef="let aux" style="width: 100%" class="table-row">
+          <a
+            routerLink="/actualiza-moneda-postgre/{{ aux.id }}"
+            
+            mat-stroked-button color="primary" 
+            >Editar</a
+          >
+          <button mat-stroked-button color="warn" 
+          (click)='delete(aux)'
+         >Borrar</button>
+
+         
+         
+        </td>
+      </ng-container>
+
+      
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  
+
+
+     
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 30]" showFirstLastButtons 
+  ></mat-paginator>
+
+</div>
+  
+</div> 

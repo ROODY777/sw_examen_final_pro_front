@@ -1,0 +1,51 @@
+<div class="container mt-3">
+  <h1 class="text-center text-secondary">Mis Movimientos</h1>
+
+  <!-- Consultar y Mostrar Detalles de Cuenta Bancaria -->
+  <section>
+    <form (ngSubmit)="onSubmitConsultaPorCuentaBancaria(consultaxNombreCuentaBancariaForm.value.nombrecuentabancaria)"
+      [formGroup]="consultaxNombreCuentaBancariaForm">
+      <label for="txtCuentaBancaria">Ingrese su Numero de Cuenta Bancaria: </label>
+      <div class="input-group mb-3">
+        <input type="text" id="txtCuentaBancaria" class="form-control"
+          placeholder="Ingrese su numero de cuenta de 16 digitos." formControlName="nombrecuentabancaria">
+        <button class="btn btn-success" type="submit"
+          [disabled]="consultaxNombreCuentaBancariaForm.invalid">Consultar</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Listado de Movimientos pertenecientes a la Cuenta Bancaria -->
+  <section>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Monto</th>
+          <th>Fecha Realizada</th>
+          <th>Tipo de Transaccion</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let m of movimientos; let i = index;">
+          <td>{{i + 1}}</td>
+          <td>{{m.monto}}</td>
+          <td>{{m.fechaCreacion}}</td>
+          <td>{{m.tipo}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example" *ngIf="totalPages > 0">
+      <ul class="pagination float-end">
+        <li class="page-item" *ngFor="let pagination of paginationSize">
+          <button class="page-link"
+            (click)="consultaListaMovimientosXNumeroCuentaBancaria(numeroCuentaBancaria, pagination)">{{pagination}}
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+</div>

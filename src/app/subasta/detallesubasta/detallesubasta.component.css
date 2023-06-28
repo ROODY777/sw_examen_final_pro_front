@@ -1,0 +1,77 @@
+
+.abrir-modal {
+    /*background-color: rgba(0, 0, 0, 0.7);*/
+  /* background-color: rgba(103, 105, 9, 0.7);*/
+    /*background-color: rgb(238, 130, 238 ,0.6)*/
+    background-color: rgba(9, 67, 105, 0.7);
+    ;
+  
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+  }
+  
+  .animacion {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+  }
+  
+  .fadeIn{
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+  }
+  @keyframes  fadeIn  {
+    0%{opacity: 0;}to{opacity: 1;}
+  }
+  @-webkit-keyframes  fadeIn  {
+    0%{opacity: 0;}to{opacity: 1;}
+  }
+
+  .example-card {
+  /* max-width: 500px;
+   min-width: 400px;*/
+
+   width: 2500px;
+ }
+
+
+ .pond {
+   display: flex;
+   flex-direction: column;
+flex-wrap: wrap;
+ }
+
+ .pondPadre{
+   display: flex;
+   flex-direction: column;
+ }
+
+
+ .ponds {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.first {
+height: 10px;
+width: 100%;
+background: #ddd;
+}
+
+.second{
+height: 10px;
+background: #009200;
+}
+
+
+
+
+
+
+ 

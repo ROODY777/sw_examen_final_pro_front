@@ -1,0 +1,13 @@
+.button {
+    margin-right: 1rem;
+}
+mat-form-field{
+    width: 100%;
+    max-width: 500px;
+}
+
+.abs-center {
+    margin-left: 25%; 
+   /*   display: flex;
+    justify-content: center;  */
+  }
